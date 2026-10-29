@@ -156,7 +156,7 @@ Required routes:
 
 The default route must point to the actual NAT Gateway.
 
-![Private Route Table](screenshots/06-private-rt.png)
+![Private Route Table](screenshots/05-public-rt.png)
 
 **Verification:** Confirm that both route tables have the correct routes and subnet associations.
 
