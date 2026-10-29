@@ -188,7 +188,6 @@ Outbound rules must permit the required traffic. Network ACLs must also allow th
 
 ![EC2 Instances](screenshots/07-ec2-instances.png)
 
-![Security Groups](screenshots/08-security-groups.png)
 
 **Security note:** Do not expose SSH to `0.0.0.0/0`. For improved security, consider AWS Systems Manager Session Manager where supported and configured.
 
@@ -223,7 +222,7 @@ curl -I http://localhost/
 
 Opened the web server's public IPv4 address in a browser to verify the default Nginx page.
 
-![Nginx Status](screenshots/09.png)
+![Nginx Status](screenshots/09-nginx-status.png)
 
 ### Task 8: Deploy the Frontend
 
