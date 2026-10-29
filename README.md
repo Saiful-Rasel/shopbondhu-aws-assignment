@@ -97,7 +97,7 @@ Created a custom VPC named `shopbondhu-vpc` with IPv4 CIDR `10.0.0.0/16`.
 
 This VPC provides the network boundary for the project's public and private subnets.
 
-![VPC Configuration](screenshots/01.png)
+![VPC Configuration](screenshots/01-vpc.png)
 
 ### Task 2: Create Public and Private Subnets
 
@@ -108,7 +108,7 @@ Created two subnets inside the custom VPC:
 
 Configured automatic public IPv4 assignment for the public subnet and disabled it for the private subnet.
 
-![Subnet Configuration](screenshots/02.png)
+![Subnet Configuration](screenshots/02-subnets.png)
 
 ### Task 3: Create and Attach the Internet Gateway
 
@@ -116,7 +116,7 @@ Created an Internet Gateway named `shopbondhu-igw` and attached it to `shopbondh
 
 An Internet Gateway alone does not make a subnet public. The route table, public IPv4 addressing, and security rules must also be configured correctly.
 
-![Internet Gateway](screenshots/03.png)
+![Internet Gateway](screenshots/03-igw-attached.png)
 
 ### Task 4: Create the NAT Gateway
 
@@ -124,7 +124,7 @@ Created `shopbondhu-nat` in the public subnet and associated an Elastic IP with 
 
 The NAT Gateway allows instances in the private subnet to initiate outbound IPv4 connections without requiring public IPv4 addresses on those instances.
 
-![NAT Gateway](screenshots/04.png)
+![NAT Gateway](screenshots/04-nat-gateway.png)
 
 ### Task 5: Configure Route Tables
 
@@ -141,7 +141,7 @@ Required routes:
 
 The default route must point to the actual IGW associated with the VPC.
 
-![Public Route Table](screenshots/05.png)
+![Public Route Table](screenshots/05-public-rt.png)
 
 #### Private Route Table
 
@@ -156,7 +156,7 @@ Required routes:
 
 The default route must point to the actual NAT Gateway.
 
-![Private Route Table](screenshots/06.png)
+![Private Route Table](screenshots/06-private-rt.png)
 
 **Verification:** Confirm that both route tables have the correct routes and subnet associations.
 
@@ -186,9 +186,9 @@ Recommended inbound rule:
 
 Outbound rules must permit the required traffic. Network ACLs must also allow the required traffic and return traffic.
 
-![EC2 Instances](screenshots/07.png)
+![EC2 Instances](screenshots/07-ec2-instances.png)
 
-![Security Groups](screenshots/08.png)
+![Security Groups](screenshots/08-security-groups.png)
 
 **Security note:** Do not expose SSH to `0.0.0.0/0`. For improved security, consider AWS Systems Manager Session Manager where supported and configured.
 
@@ -486,12 +486,7 @@ After collecting the required assignment evidence, remove resources that are no 
 - [ ] Delete the custom VPC after dependent resources have been removed, if the lab is being retired.
 - [ ] Verify the final resource states in the AWS console.
 
-### Cleanup Evidence
-
-Add a screenshot showing the NAT Gateway has been deleted and the Elastic IP has been released.
-
-![NAT Gateway Cleanup](screenshots/12-nat-cleanup.png)
-
+### Cleanup 
 **Why is cleanup important?**
 
 NAT Gateways can incur hourly and data-processing charges while they exist. Public IPv4 addresses can also incur charges depending on their allocation and usage.
